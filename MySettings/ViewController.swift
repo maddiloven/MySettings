@@ -18,12 +18,18 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var txtPhoneNumber: UITextField!
     
+    @IBOutlet weak var txtUsername: UITextField!
+    
+    @IBOutlet weak var txtPassword: UITextField!
+    
     
     @IBAction func btnSave(_ sender: UIButton) {
         let defaults: UserDefaults = UserDefaults.standard
             defaults.set(self.txtFullName.text, forKey: "fullname")
             defaults.set(self.txtEmail.text, forKey: "email")
             defaults.set(self.txtPhoneNumber.text, forKey: "phonenumber")
+            defaults.set(self.txtUsername.text, forKey: "username")
+            defaults.set(self.txtPassword.text, forKey: "password")
               let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MMM d, yyyy" //Your New Date format as per requirement change it own
             let newDate = dateFormatter.string(from:datepicker.date) //pass Date here
@@ -44,12 +50,21 @@ class ViewController: UIViewController {
               if defaults.string(forKey: "fullname") != nil{
                     txtFullName.text = defaults.string(forKey: "fullname")
               }
+        
               if defaults.string(forKey: "email") != nil{
                   txtEmail.text = defaults.string(forKey: "email")
               }
+        
               if defaults.string(forKey: "phonenumber") != nil{
                   txtPhoneNumber.text = defaults.string(forKey: "phonenumber")
               }
+        
+              if defaults.string(forKey: "username") != nil{ txtUsername.text = defaults.string(forKey: "username")
+              }
+        
+              if defaults.string(forKey: "password") != nil{ txtPassword.text = defaults.string(forKey: "password")
+              }
+        
               if defaults.string(forKey: "bdate") != nil{
                   let bdate  = defaults.string(forKey: "bdate")
                   let dateFormatter = DateFormatter()
@@ -64,6 +79,8 @@ class ViewController: UIViewController {
      txtEmail.resignFirstResponder()
      txtFullName.resignFirstResponder()
      txtPhoneNumber.resignFirstResponder()
+     txtUsername.resignFirstResponder()
+     txtPassword.resignFirstResponder()
      }
 
 }
